@@ -59,7 +59,7 @@ let
       BL31 = (rkbin + "/bin/rk35/rk3568_bl31_v1.43.elf");
       ROCKCHIP_TPL = (rkbin + "/bin/rk35/rk3566_ddr_1056MHz_v1.18.bin");
     };
-  buildRK3582A = defconfig:
+  buildRK3528A = defconfig:
     let
       rkbin = fetchFromGitHub {
         owner = "rockchip-linux";
