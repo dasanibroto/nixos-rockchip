@@ -101,6 +101,11 @@
           kernel = (kernel system).linux_6_6_rockchip;
           extraModules = [ ];
         };
+        "NanoPiZero2" = {
+          uBoot = (uBoot system).uBootNanoPiZero2;
+          kernel = (kernel system).linux_6_6_rockchip;
+          extraModules = [ ];
+        }
       };
 
       osConfigs = system:

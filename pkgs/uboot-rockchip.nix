@@ -59,6 +59,20 @@ let
       BL31 = (rkbin + "/bin/rk35/rk3568_bl31_v1.43.elf");
       ROCKCHIP_TPL = (rkbin + "/bin/rk35/rk3566_ddr_1056MHz_v1.18.bin");
     };
+  buildRK3582A = defconfig:
+    let
+      rkbin = fetchFromGitHub {
+        owner = "rockchip-linux";
+        repo = "rkbin";
+        rev = "b4558da0860ca48bf1a571dd33ccba580b9abe23";
+        sha256 = "KUZQaQ+IZ0OynawlYGW99QGAOmOrGt2CZidI3NTxFw8=";
+      };
+    in buildPatchedUBoot {
+      inherit defconfig;
+      BL31 = (rkbin + "/bin/rk35/rk3528_bl31_v1.17.elf");
+      ROCKCHIP_TPL = (rkbin + "/bin/rk35/rk3528_ddr_1056MHz_v1.09.bin");
+    };
+
 in {
   uBootQuartz64A = buildRK3566UBoot "quartz64-a-rk3566_defconfig";
   uBootQuartz64B = buildRK3566UBoot "quartz64-b-rk3566_defconfig";
@@ -71,4 +85,5 @@ in {
   uBootROCPCRK3399 = buildRK3399UBoot "roc-pc-rk3399_defconfig";
   uBootRock64 = buildRK3328UBoot "rock64-rk3328_defconfig";
   uBootOrangePiCM4 = buildRK3566UBoot "orangepi-3b-rk3566_defconfig";
+  uBootNanoPiZero2 = buildRK3528A "nanopi-zero2-rk3582A_defconfig"
 }
